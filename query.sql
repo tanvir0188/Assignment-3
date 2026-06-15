@@ -89,3 +89,17 @@ SELECT
   COALESCE(payment_status, 'Action Required') AS payment_status
 FROM bookings
 WHERE payment_status IS NULL;
+
+--query 4:
+SELECT
+  b.booking_id,
+u.full_name, m.fixture, b.total_cost
+FROM bookings b INNER JOIN users u
+ON b.user_id=u.user_id INNER JOIN matches m
+on b.match_id=m.match_id;
+
+--query 5:
+select u.user_id, u.full_name, b.booking_id
+from users u
+left join bookings b
+on u.user_id=b.user_id;
